@@ -68,6 +68,15 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name instead of "Registrant".
 
+# Module 4: Prevent Over-adding digits for card reader
+
+## Test steps
+1. Build and run CiCo.
+2. Enter 000000001 into the field.
+
+## Expected results
+* Should prevent the last digit, int his case 1, from being entered into the field
+
 
 
 
