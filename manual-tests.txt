@@ -88,6 +88,34 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * "Clean shutdown" appears in the shell.
 * No need to manually stop the program.
 
+# Module 6: Auto-submit when card number is entered
+
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field without pressing Enter.
+3. Wait 11 seconds.
+
+## Expected results
+* The status panel should appear immediately after the last digit is entered in step 2.
+* The main panel should appear after step 3.
+
+# Module 6: Do not submit before the last digit
+
+## Test steps
+1. Build and run CiCo.
+2. Enter 0000000 (seven digits) into the field.
+
+## Expected results
+* Nothing should happen. The main panel should remain visible and no status or error panel should appear.
+
+# Module 6: Remove the Update button
+
+## Test steps
+1. Build and run CiCo.
+
+## Expected results
+* No Update button should be visible on the main panel.
+
 
 
 
