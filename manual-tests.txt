@@ -88,6 +88,12 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * "Clean shutdown" appears in the shell.
 * No need to manually stop the program.
 
+# Module 6: Alter close behavior- close on final digit entry
 
+## Test steps
+1. Launch CiCo
+2. Type valid input
 
-
+## Expected results
+* Login code is accepted
+* Window closes automatically (no submit/enter button required)

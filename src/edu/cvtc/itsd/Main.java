@@ -32,20 +32,23 @@ public class Main {
   private static final long TIMEOUT_PANEL_MS = 10 * 1000;
   private static final int TIMEOUT_STATEMENT_S = 5;
 
-  // Internal classes ///////////////////////////////////////////////////////////
+  // Internal classes /////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
     private static final int MAX_LENGTH = 8;
 
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
+        throws BadLocationException {
       int currentLength = fb.getDocument().getLength();
       int newLength = currentLength + stringToAdd.length();
       if (newLength <= MAX_LENGTH) {
         super.insertString(fb, offset, stringToAdd, attr);
+
+      if (newLength == MAX_LENGTH) {
+        Main.processCard();
       }
+    }
       else {
         Toolkit.getDefaultToolkit().beep();
       }
@@ -59,6 +62,10 @@ public class Main {
       int newLength = currentLength - lengthToDelete + stringToAdd.length();
       if (newLength <= MAX_LENGTH) {
         super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+
+        if  (newLength == MAX_LENGTH) {
+          Main.processCard();
+        }
       }
       else {
         Toolkit.getDefaultToolkit().beep();
@@ -264,12 +271,12 @@ public class Main {
     fieldNumber.setBackground(Color.green);
     fieldNumber.setForeground(Color.magenta);
     panelMain.add(fieldNumber);
-
-    JButton updateButton = new JButton("Update");
-    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    updateButton.addActionListener(new Update());
-    updateButton.setForeground(Color.green);
-    panelMain.add(updateButton);
+// // Button for code submission, commented out for reference of ticket 601
+//    JButton updateButton = new JButton("Update");
+//    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+//    updateButton.addActionListener(new Update());
+//    updateButton.setForeground(Color.green);
+//    panelMain.add(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 
